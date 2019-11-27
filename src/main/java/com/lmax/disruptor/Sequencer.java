@@ -18,6 +18,16 @@ package com.lmax.disruptor;
 /**
  * Coordinates claiming sequences for access to a data structure while tracking dependent {@link Sequence}s
  */
+
+/**
+ * 生成者核心类
+ * Sequencer【接口】，实现如下：
+ * =》AbstractSequencer【abstract】
+ * =》SingleProducerSequencerPad【abstract】，MultiProducerSequencer【final】多生产者发布实现类
+ * =》SingleProducerSequencerFields【abstract】
+ * =》SingleProducerSequencer【final】单生产者发布实现类
+ *
+ */
 public interface Sequencer extends Cursored, Sequenced
 {
     /**

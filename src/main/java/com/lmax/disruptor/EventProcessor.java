@@ -23,6 +23,24 @@ package com.lmax.disruptor;
  * <p>
  * An EventProcessor will generally be associated with a Thread for execution.
  */
+
+/**
+ * 消费端核心类。
+ *
+ *disruptor在启动的时候会将所有注册上来的EventProcessor提交到线程池中执行，因此一个EventProcessor可以看成一个独立的线程流，用于处理RingBuffer上的数据.
+ *
+ * 其实现类实现了run()方法，不断的轮询，获取数据对象，把数据对象交给消费者处理，具体怎么交给消费者，利用了消费者的等待策略；
+ *
+ * 共有3个实现类：1、BatchEventProcessor,2、WorkProcessor,3、NoOpEventProcessor
+ *
+ * 1、BatchEventProcessor在run()方法中回调com.lmax.disruptor.EventHandler的实现对象，其所有的Consumer都实现了com.lmax.disruptor.EventHandler接口；
+ *
+ * 2、WorkProcessor在run()方法中回调com.lmax.disruptor.WorkHandler的实现对象，其所有的Consumer都实现了com.lmax.disruptor.WorkHandler接口；在多生产者多消费者模式下，确保每个sequence只被一个processor消费，在同一个WorkPool中，
+ * 确保多个WorkProcessor不会消费同样的sequence。在WorkerPool中使用了WorkProcessor，WorkerPool会把传入的workhandler放入workProcessor中。
+ *
+ * 3.NoOpEventProcessor啥都没做
+ *
+ */
 public interface EventProcessor extends Runnable
 {
     /**

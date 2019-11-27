@@ -47,7 +47,11 @@ sourceSets {
 eclipse.classpath.plusConfigurations += [ sourceSets.perf.compileClasspath ]
 
 repositories {
-    mavenCentral()
+    maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
+	maven { url "https://plugins.gradle.org/m2/" }
+	maven { url "https://repo.spring.io/plugins-release/" }
+	mavenCentral()
+	maven { url "https://repo.spring.io/libs-spring-framework-build" }
 }
 
 dependencies {
@@ -174,9 +178,9 @@ task perfJar(type: Jar) {
     with jar
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.3'
-}
+//task wrapper(type: Wrapper) {
+//    gradleVersion = '5.6.4'
+//}
 
 class Version {
     int major, minor = 0, revision = 0

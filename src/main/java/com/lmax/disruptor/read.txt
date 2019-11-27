@@ -1,0 +1,17 @@
+一、消费端处理接口：
+1、EventHandler
+2、WorkHandler
+3、EventProcessor
+
+
+二、生产端处理接口：
+Sequencer
+
+三、队列
+RingBuffer
+Disruptor
+
+四、协调
+SequenceBarrier
+WaitStrategy
+

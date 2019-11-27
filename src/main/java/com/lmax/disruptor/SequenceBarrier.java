@@ -20,6 +20,16 @@ package com.lmax.disruptor;
  * Coordination barrier for tracking the cursor for publishers and sequence of
  * dependent {@link EventProcessor}s for processing a data structure
  */
+
+/**
+ * SequenceBarrier【接口】=》实现类ProcessingSequenceBarrier
+ *
+ *  消费者屏障。主要作用于消费者的Sequence。
+ *
+ *  1.控制消费者等待生产者生产可达的数据即cursor Sequence。
+ *  2.消费者依赖图,此时SequenceBarrier将控制消费者的Sequence不超过另外被依赖消费者的Sequence。
+ *
+ */
 public interface SequenceBarrier
 {
     /**
