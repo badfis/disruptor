@@ -1,17 +1,21 @@
-一、消费端处理接口：
-1、EventHandler
-2、WorkHandler
-3、EventProcessor
+一、应用场景
+与线程池、BlockingQueue或观察者模式区别：同一个“事件”可以有多个消费者，消费者之间既可以并行处理，也可以相互依赖形成处理的先后次序(形成一个依赖图)；
 
 
-二、生产端处理接口：
+二、基础概念
+2.1、消费端处理接口：
+EventHandler
+WorkHandler
+EventProcessor
+
+2.2、生产端处理接口：
 Sequencer
 
-三、队列
+2.3、队列
 RingBuffer
 Disruptor
 
-四、协调
+2.4、协调
 SequenceBarrier
 WaitStrategy
 
