@@ -43,7 +43,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 
 /**
- * Disruptor 提供了对RingBuffer的封装。
+ * Disruptor 提供了对RingBuffer的封装。详细见下面private私有构造函数。
  */
 public class Disruptor<T> {
     private final RingBuffer<T> ringBuffer;
@@ -122,6 +122,14 @@ public class Disruptor<T> {
 
     /**
      * Private constructor helper
+     */
+    /**
+     * Disruptor最终构造函数
+     *
+     * 1.RingBuffer：1.1.Sequencer类型：单个还是多个生产者，1.2.生产事件的工厂，1.3.sequencer包括大小和等待策略。
+     *
+     * 2.Executor：消费者消费线程工厂
+     *
      */
     private Disruptor(final RingBuffer<T> ringBuffer, final Executor executor) {
         this.ringBuffer = ringBuffer;
